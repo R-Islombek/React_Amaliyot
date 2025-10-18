@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import { useState } from 'react'
 const App = () => {
-  const [count, setCount] = useState(0);
-
+  const [open, setOpen] =  useState()
   return (
     <div>
-          <h1>{count}</h1>
-          <button onClick={()=>setCount(count + 1 )} >Increment</button>
-          <button onClick={()=>setCount(count - 1)}  >Decrament</button>
-          <button onClick={()=>setCount(0)} >Reset</button>         
+          <button onClick={()=>setOpen(!open)} >Open</button>
+          <dialog open={open} >Message</dialog>
     </div>
   )
 }
