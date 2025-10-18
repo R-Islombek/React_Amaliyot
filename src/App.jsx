@@ -1,11 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
+
 const App = () => {
-  const [open, setOpen] =  useState()
+  const [count, setCount] = React.useState(0)
   return (
     <div>
-          <button onClick={()=>setOpen(!open)} >Open</button>
-          <dialog open={open} >Message</dialog>
+            <h1>{count}</h1>
+            <input type="text" onChange={(e) => setCount(e.target.value)} />
     </div>
   )
 }
