@@ -1,20 +1,54 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const App = () => {
-
-  const arr = [1, 2, 3, 4, 5, 6]
-  return (
+const SoddaroqTodo = () => {
+  const [todos, setTodos] = useState([]);
   
-    <div>
-          <input type="text" />
-          <ul>
-               {arr.map((item)=>(
-                <li key={item}>{item}</li>
-               ))}
-          </ul>
-    </div>
-  )
-}
+  const [input, setInput] = useState('');
 
-export default App
+
+  const addTodo = () => {
+    if (input.trim()) {
+      const newTodo = {
+        id: Date.now(),
+        text: input,
+      };
+      
+      setTodos([...todos, newTodo]);
+      setInput('');
+    }
+  };
+
+
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter(todo => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
+  return (
+    <div>
+      <h1>Soddaroq Todo Ilovasi</h1>
+      
+      {/* Input va Qo'shish tugmasi */}
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Yangi ish..."
+      />
+      <button onClick={addTodo}>Qo'shish</button>
+
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.text}
+      
+            <button onClick={() => deleteTodo(todo.id)}>O'chirish</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default SoddaroqTodo;
