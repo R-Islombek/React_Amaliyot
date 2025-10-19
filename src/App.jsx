@@ -1,26 +1,18 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 const App = () => {
 
-  const [x, setX] = useState(false);
-
-   const handleChange = (evt)=>{
-      if (evt.target.value.length  >= 6) {
-        setX(false);
-      } else if(evt.target.value.length  > 0){
-        setX(true);
-      }else{
-        setX(false);
-      }
-   }
-
-
-
+  const arr = [1, 2, 3, 4, 5, 6]
   return (
+  
     <div>
-          <input type="text" onChange={handleChange} />
-          {x && <span>kamida 6 ta belgidan iborat bo'sin</span>}
+          <input type="text" />
+          <ul>
+               {arr.map((item)=>(
+                <li key={item}>{item}</li>
+               ))}
+          </ul>
     </div>
   )
 }
